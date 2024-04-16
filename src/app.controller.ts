@@ -1,4 +1,4 @@
-import { Controller, Get, Render } from '@nestjs/common';
+import { Controller, Get, Render, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { ConfigService } from '@nestjs/config';
 
@@ -9,7 +9,7 @@ export class AppController {
     private configService: ConfigService
   ) { }
 
-  @Get() // route " " /=> (restful)
+  @Post() // route " " /=> (restful)
   @Render("home")
   handleHomePage() {
     // port from .env
