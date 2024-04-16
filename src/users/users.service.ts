@@ -41,11 +41,16 @@ export class UsersService {
 
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(updateUserDto: UpdateUserDto) {
+    return this.userModel.updateOne({
+      _id: updateUserDto._id
+    }, { ...updateUserDto })
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  remove(id: string) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return "not found user"
+    }
+    return this.userModel.deleteOne({ _id: id });
   }
 }
