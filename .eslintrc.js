@@ -23,3 +23,4 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
   },
 };
+// connfig eslint, giúp check code khi viết theo cú pháp typescript

@@ -10,12 +10,15 @@ export class AuthService {
         const user = await this.usersService.findOneByUsername(username);
         if (user) {
             const isValid = await this.usersService.isValidPassword(pass, user.password)
+            if (isValid === true) {
+                return user;
+            }
         }
 
-        if (user && user.password === pass) {
-            const { password, ...result } = user;
-            return result;
-        }
+        // if (user && user.password === pass) {
+        //     const { password, ...result } = user;
+        //     return result;
+        // }
         return null;
     }
 }
