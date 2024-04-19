@@ -5,6 +5,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { LocalAuthGuard } from './auth/local-auth.guard';
 import { AuthService } from './auth/auth.service';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
+import { Public } from './decorator/customize';
 
 @Controller() // ko dinh dang route vi ta muon file app phai la file home => /
 export class AppController {
@@ -14,15 +15,22 @@ export class AppController {
     private authService: AuthService
   ) { }
 
-  // @UseGuards(LocalAuthGuard)
+  @Public()
+  @UseGuards(LocalAuthGuard)
   @Post('/login')
   handleLogin(@Request() req) {
     return this.authService.login(req.user);
   }
 
-  // @UseGuards(JwtAuthGuard)
+  @Public()
   @Get('profile')
   getProfile(@Request() req) {
+    return req.user;
+  }
+
+  // @UseGuards(JwtAuthGuard)
+  @Get('profile1')
+  getProfile1(@Request() req) {
     return req.user;
   }
 }
