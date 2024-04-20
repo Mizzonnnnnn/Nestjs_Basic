@@ -16,7 +16,8 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "esModuleInterop": true
   },
   "comments": "khai bao cách dịch code typescript thành javascript(moi trương dev)"
 }
